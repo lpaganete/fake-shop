@@ -49,5 +49,10 @@ jobs:
       - name: Configurar o kubectl
         run: aws eks update-kubeconfig --name aula-k8s
 
-     # - name: Aplicar os manifestos no Kebernetes
-      
+      - name: Aplicar os manifestos no Kebernetes
+        uses: Azure/k8s-deploy@v5
+        with:
+          manifests: |
+              ./k8s/deployment.yaml
+          images: |
+              lpreis/fake-shop:v${{ github.run_number }}
