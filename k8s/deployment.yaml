@@ -55,7 +55,7 @@ spec:
     spec:
       containers:
       - name: fakeshop
-        image: lpreis/fake-shop:v1
+        image: lpreis/fake-shop
         ports:
           - containerPort: 5000
         env:

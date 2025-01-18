@@ -31,6 +31,10 @@ jobs:
   cd:
     runs-on: ubuntu-latest
     needs: [ci]
+    permissions:
+      id-token: write
+      contents: read
+      actions: read
     steps:
       - name: Obter o código do projeto
         uses: actions/checkout@v4
@@ -43,7 +47,7 @@ jobs:
           aws-region: ${{ secrets.AWS_SECRET_REGION }}
 
       - name: Configurar o kubectl
-        run: echo "Executando o comando aws eks update-kubeconfig"
+        run: aws eks update-kubeconfig --name aula-k8s
 
-      - name: Aplicar os manifestos no Kebernetes
-        run: echo "Executando o kubectl apply"
+     # - name: Aplicar os manifestos no Kebernetes
+      
